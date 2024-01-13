@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - echo "Upgrading pip..."
+      - pip install --upgrade pip
+      - echo "Installing zip..."
+  build:
+    commands:
+      - echo "Installing Python dependencies..."
+      - pip install -r requirements.txt -t python/lib/python3.10/site-packages
+      - echo "Zipping Python dependencies as Lambda layer..."
+      - python3 server.py
+artifacts:
+  files:
+  discard-paths: yes
