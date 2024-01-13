@@ -14,6 +14,6 @@ phases:
       - pip install -r requirements.txt -t python/lib/python3.9/site-packages
       - echo "Zipping Python dependencies as Lambda layer..."
       - python3 server.py
-artifacts:
-  files:
-  discard-paths: yes
+# artifacts:
+#   files:
+#   discard-paths: yes
