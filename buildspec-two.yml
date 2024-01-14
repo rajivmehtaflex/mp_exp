@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing Terraform..."
+      - sudo yum install -y yum-utils shadow-utils
+      - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - sudo yum -y install terraform
+  pre_build:
+    commands:
+      - echo "getting into terraform directory..."
+      - cd infra/
+      - echo "Terraform init..."
+      - terraform init 
+      - terraform validate
+  build:
+    commands:
+      - echo "Terraform apply..."
+      - terraform apply -auto-approve
