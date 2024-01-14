@@ -11,9 +11,9 @@ phases:
   build:
     commands:
       - echo "Installing Python dependencies..."
-      - pip install -r requirements.txt -t python/lib/python3.9/site-packages
+      - pip install -r requirements.txt
       - echo "Zipping Python dependencies as Lambda layer..."
       - python3 server.py
-# artifacts:
-#   files:
-#   discard-paths: yes
+artifacts:
+  files:
+    - '**/*'
